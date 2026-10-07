@@ -79,34 +79,53 @@ def main():
     out = Path(args.saida).resolve()
     ensure_dirs(out)
 
-    print("Baixando candidatas do Open Images V7...")
-    dataset = foz.load_zoo_dataset(
-        "open-images-v7",
-        split="train",
-        label_types=["detections"],
-        classes=["Person", "Car"],
-        max_samples=args.candidatas,
-        shuffle=True,
-        seed=args.seed,
-    )
-
-    observed = sorted(dataset.distinct("ground_truth.detections.label"))
-    print("Classes observadas no subconjunto:", observed)
-
+    print("Baixando candidatas do Open Images V7 por classe...")
     pools = {"person": [], "car": []}
-    for sample in dataset:
-        target = only_one_target(sample)
-        if target is None:
-            continue
-        labels = yolo_lines(sample, target)
-        if not labels:
-            continue
-        pools[target].append((sample, labels))
 
-    for target in pools:
+    for target in ("person", "car"):
+        canonical = CANONICAL[target]
+        other = "car" if target == "person" else "person"
+
+        print(f"\nBuscando candidatas de {canonical}...")
+        dataset = foz.load_zoo_dataset(
+            "open-images-v7",
+            split="train",
+            label_types=["detections"],
+            classes=[canonical],
+            max_samples=args.candidatas,
+            shuffle=True,
+            seed=args.seed,
+            dataset_name=f"farmtech-openimages-{target}-{args.candidatas}",
+        )
+
+        observed = sorted(dataset.distinct("ground_truth.detections.label"))
+        print(f"Classes observadas nas candidatas de {canonical}:", observed)
+
+        for sample in dataset:
+            detections = (
+                sample.ground_truth.detections
+                if sample.has_field("ground_truth") and sample.ground_truth
+                else []
+            )
+            present = {
+                str(d.label).strip().casefold()
+                for d in detections
+                if str(d.label).strip().casefold() in TARGETS
+            }
+
+            # Queremos uma única classe-alvo por imagem para a CNN.
+            if target not in present or other in present:
+                continue
+
+            labels = yolo_lines(sample, target)
+            if labels:
+                pools[target].append((sample, labels))
+
+        print(f"Imagens válidas de {canonical}: {len(pools[target])}")
+
         if len(pools[target]) < 40:
             raise RuntimeError(
-                f"Foram encontradas apenas {len(pools[target])} imagens válidas de {CANONICAL[target]}. "
+                f"Foram encontradas apenas {len(pools[target])} imagens válidas de {canonical}. "
                 "Rode novamente aumentando --candidatas, por exemplo para 1200."
             )
 
