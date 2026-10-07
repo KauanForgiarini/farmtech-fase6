@@ -15,7 +15,7 @@ Projeto acadêmico de Inteligência Artificial da FIAP: demonstração de visão
 
 - [Notebook principal](./KauanMacielForgiarini_rm574005_pbl_fase6.ipynb)
 - [Abrir no Colab](https://colab.research.google.com/github/KauanForgiarini/farmtech-fase6/blob/main/KauanMacielForgiarini_rm574005_pbl_fase6.ipynb)
-- Dataset no Google Drive: **PREENCHER com link público**
+- [Dataset e arquivos no Google Drive](https://drive.google.com/drive/u/2/folders/1XsiF9JkagZAkUnX5rIdGXNYqh_KopUOf)
 - Vídeo não listado no YouTube (até 5 minutos): **PREENCHER depois que o Wagner enviar**
 
 ## Dataset
