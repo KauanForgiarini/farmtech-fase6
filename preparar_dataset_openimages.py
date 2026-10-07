@@ -20,8 +20,9 @@ import shutil
 import fiftyone as fo
 import fiftyone.zoo as foz
 
-TARGETS = {"Person": 0, "Car": 1}
-PT_NAMES = {"Person": "pessoa", "Car": "carro"}
+TARGETS = {"person": 0, "car": 1}
+CANONICAL = {"person": "Person", "car": "Car"}
+PT_NAMES = {"person": "pessoa", "car": "carro"}
 SPLITS = [("train", 32), ("val", 4), ("test", 4)]
 
 
@@ -35,19 +36,25 @@ def safe_image_id(sample):
 
 
 def only_one_target(sample):
-    detections = sample.ground_truth.detections if sample.has_field('ground_truth') and sample.ground_truth else []
-    present = {d.label for d in detections if d.label in TARGETS}
-    if present == {"Person"}:
-        return "Person"
-    if present == {"Car"}:
-        return "Car"
+    detections = sample.ground_truth.detections if sample.has_field("ground_truth") and sample.ground_truth else []
+    present = {
+        str(d.label).strip().casefold()
+        for d in detections
+        if str(d.label).strip().casefold() in TARGETS
+    }
+    if present == {"person"}:
+        return "person"
+    if present == {"car"}:
+        return "car"
     return None
 
 
 def yolo_lines(sample, target):
     rows = []
-    for det in (sample.ground_truth.detections if sample.has_field('ground_truth') and sample.ground_truth else []):
-        if det.label != target:
+    detections = sample.ground_truth.detections if sample.has_field("ground_truth") and sample.ground_truth else []
+    for det in detections:
+        label = str(det.label).strip().casefold()
+        if label != target:
             continue
         x, y, w, h = det.bounding_box
         cx = x + w / 2
@@ -83,7 +90,10 @@ def main():
         seed=args.seed,
     )
 
-    pools = {"Person": [], "Car": []}
+    observed = sorted(dataset.distinct("ground_truth.detections.label"))
+    print("Classes observadas no subconjunto:", observed)
+
+    pools = {"person": [], "car": []}
     for sample in dataset:
         target = only_one_target(sample)
         if target is None:
@@ -96,7 +106,7 @@ def main():
     for target in pools:
         if len(pools[target]) < 40:
             raise RuntimeError(
-                f"Foram encontradas apenas {len(pools[target])} imagens válidas de {target}. "
+                f"Foram encontradas apenas {len(pools[target])} imagens válidas de {CANONICAL[target]}. "
                 "Rode novamente aumentando --candidatas, por exemplo para 1200."
             )
 
@@ -106,7 +116,7 @@ def main():
         pools[target] = pools[target][:40]
 
     manifest = []
-    for target in ("Person", "Car"):
+    for target in ("person", "car"):
         cursor = 0
         seq = 1
         for split, amount in SPLITS:
