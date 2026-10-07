@@ -20,7 +20,7 @@ Projeto acadêmico de Inteligência Artificial da FIAP: demonstração de visão
 
 ## Executar
 
-1. Ler `GUIA_ENTREGA.md` e preparar o dataset conforme a seção 2 do notebook.
+1. Ler `GUIA_ENTREGA.md` e preparar o dataset conforme a seção 2 do notebook. Para acelerar a coleta, o repositório inclui `preparar_dataset_openimages.py`, que baixa candidatas de pessoa/carro e gera rótulos YOLO preliminares para revisão.
 2. Abrir o notebook no Colab e selecionar um ambiente com GPU.
 3. Copiar `FarmTech_Fase6` para Meu Drive, conferir o caminho BASE e executar as células em ordem.
 4. Analisar os resultados, preencher a discussão crítica e salvar as saídas do notebook.
@@ -40,3 +40,15 @@ Resultados numéricos e conclusões experimentais só podem ser apresentados ap�
 ## Continuidade acadêmica
 
 A [Fase 5](https://github.com/KauanForgiarini/farmtech-fase5-ml) abordou clusterização, regressão de produtividade e custos em nuvem. A Fase 6 mantém o contexto FarmTech e introduz um dataset de imagens e redes neurais em um repositório independente.
+
+
+## Coleta sem procurar 80 fotos manualmente
+
+Como apoio, execute:
+
+```bash
+pip install -r requirements_dataset.txt
+python preparar_dataset_openimages.py --saida FarmTech_Fase6/dataset
+```
+
+O utilitário seleciona 40 imagens de **pessoa** e 40 de **carro**, separa 32/4/4 por classe e gera os TXT no formato YOLO. **Antes da entrega, revise visualmente as 80 imagens, as caixas e a licença/origem de cada arquivo.** Se o enunciado/professor exigir passagem pelo Make Sense AI, importe as imagens/rótulos e faça a conferência final nele. Não trate os rótulos automáticos como etapa já validada.
