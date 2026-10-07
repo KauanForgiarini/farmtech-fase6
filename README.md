@@ -57,7 +57,7 @@ O YOLO 30 apresentou mAP50–95 de aproximadamente **0,673 para carro** e **0,23
 
 > O conjunto de teste contém apenas oito imagens. Cada erro altera a acurácia em 12,5 pontos percentuais, portanto os resultados não demonstram prontidão para produção.
 
-Uma discussão mais completa está em [RESULTADOS.md](./RESULTADOS.md).
+Uma discussão mais completa está em [RESULTADOS.md](./RESULTADOS.md). A origem e o licenciamento do dataset estão documentados em [FONTES.md](./FONTES.md).
 
 ## Execução
 
