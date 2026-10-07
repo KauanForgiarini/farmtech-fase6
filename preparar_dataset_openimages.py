@@ -35,7 +35,7 @@ def safe_image_id(sample):
 
 
 def only_one_target(sample):
-    detections = sample.detections.detections if sample.detections else []
+    detections = sample.ground_truth.detections if sample.has_field('ground_truth') and sample.ground_truth else []
     present = {d.label for d in detections if d.label in TARGETS}
     if present == {"Person"}:
         return "Person"
@@ -46,7 +46,7 @@ def only_one_target(sample):
 
 def yolo_lines(sample, target):
     rows = []
-    for det in sample.detections.detections:
+    for det in (sample.ground_truth.detections if sample.has_field('ground_truth') and sample.ground_truth else []):
         if det.label != target:
             continue
         x, y, w, h = det.bounding_box
