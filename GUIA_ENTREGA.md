@@ -1,51 +1,62 @@
 # Interpretação do enunciado e preparação
 
-É a continuidade narrativa da FarmTech Solutions. A empresa está expandindo para visão computacional. A implementação desta fase é nova e o enunciado exige um NOVO repositório com o nome do grupo; não é pedido integrar Oracle, sensores, dashboard ou modelos das fases anteriores.
+É a continuidade narrativa da FarmTech Solutions. A empresa está expandindo para visão computacional. A implementação desta fase é nova e não integra Oracle, sensores, dashboard ou modelos das fases anteriores.
 
-O cabeçalho introdutório é ambíguo, mas o barema explicita “Entregas 1 e 2” como obrigatórias. Assim, o pacote contempla ambas. ESP32/Webcam e transfer learning com segmentação são opções extras sem nota.
+O pacote contempla as Entregas 1 e 2. ESP32/Webcam e transfer learning com segmentação são opções extras sem nota.
 
-Prazo informado: 13/10/2026 às 23h59. Até três dias de atraso: teto de 70% da nota. Não fazer commits depois da entrega. Grupo mostrado no portal: Grupo 9, apenas Kauan cadastrado. Se houver colega, regularizar o grupo no portal antes de enviar.
+Prazo informado: 13/10/2026 às 23h59. Até três dias de atraso: teto de 70% da nota. Não fazer commits depois da entrega final.
 
-## O que falta fornecer
+## Estado atual
 
-- Dupla confirmada: Kauan (RM 574005) e Wagner (RM 569431). Conferir inclusão dos dois no portal.
-- 80 imagens e rótulos YOLO produzidos no Make Sense AI (ou um dataset existente que cumpra o enunciado).
-- Conteúdo do capítulo 3 se for necessário reproduzir exatamente a implementação de “YOLO tradicional” da disciplina. O pacote usa YOLOv8n padrão como baseline, interpretação que precisa ser conferida com o material da aula.
-- Endereço do novo GitHub e links do Colab/Drive.
-- Vídeo real da demonstração, até cinco minutos.
+- Dupla: Kauan Maciel Forgiarini (RM 574005) e Wagner Adriano de Souza Silva Junior (RM 569431).
+- Dataset: 80 imagens, com 64 treino, 8 validação e 8 teste.
+- Classes: pessoa e carro.
+- YOLO 30 e YOLO 60 treinados.
+- YOLO padrão avaliado como baseline.
+- CNN do zero treinada por 60 épocas; melhor validação na época 20.
+- Avaliação final e prints das oito imagens executados.
+- Discussão crítica consolidada em `RESULTADOS.md`.
+- Vídeo: pendente.
 
-## Dataset
+## Resultados conferidos
 
-Classes iniciais: pessoa e carro. Não misturar as duas classes-alvo na mesma foto, porque a CNN classifica uma classe por imagem. Podem existir várias pessoas em uma imagem ou vários carros em outra; rotular todas as instâncias da classe. Se quiser outras classes, ajustar CLASSES e o mapeamento COCO do baseline — não basta renomear os rótulos.
+### Validação
+- YOLO 30: mAP50–95 = 0,244.
+- YOLO 60: mAP50–95 = 0,231.
+- Modelo selecionado antes do teste: YOLO 30.
 
-No Drive, criar FarmTech_Fase6/dataset. Dentro, criar images/train, images/val, images/test, labels/train, labels/val e labels/test. Colocar 32 fotos de cada classe no treino, quatro de cada na validação e quatro de cada no teste. Os TXT devem ter o mesmo nome-base das fotos.
+### Teste por imagem
+- YOLO padrão: 87,5%.
+- YOLO 30: 100% (8/8).
+- YOLO 60: 87,5% (7/8, uma abstenção).
+- CNN do zero: 0% (0/8).
 
-Registrar origem e licença em fontes.csv. Fotografias próprias de cenas distintas reduzem risco de sobreposição com o treinamento prévio do COCO. Não usar a mesma cena em splits diferentes. A validação automática detecta duplicatas exatas, não fotografias quase iguais; revisar manualmente.
+### Detecção no teste
+- YOLO 30: precision 0,912; recall 0,556; mAP50 0,609; mAP50–95 0,455.
+- YOLO 60: precision 0,557; recall 0,611; mAP50 0,570; mAP50–95 0,378.
 
 ## Revisão antes de enviar
 
 - [x] RM 574005 no notebook e no nome do arquivo.
-- [ ] Arquivo de fontes e dataset completo, com permissões de leitura adequadas.
-- [ ] 64 imagens treino, 8 validação, 8 teste; nenhuma cena compartilhada.
-- [ ] Rótulos feitos no Make Sense e salvos no Drive.
-- [ ] Todos os códigos executados, sem erros, e saídas mantidas.
-- [ ] Treinamentos de 30 e 60 épocas completos.
-- [ ] Comparação de precisão, erros, tempos e facilidade das três abordagens.
-- [ ] Gráficos de perda e prints dos oito testes visíveis.
-- [ ] Discussão crítica preenchida com os resultados reais.
-- [ ] Novo repositório público, sugestão de nome: grupo-9-farmtech-fase6.
-- [ ] README atualizado com nome final do notebook, Colab, dataset e vídeo.
-- [ ] Vídeo não listado com duração de até cinco minutos.
-- [ ] Links conferidos em janela anônima.
-- [ ] Link do GitHub enviado no portal até o prazo.
-- [ ] Nenhum commit depois de enviar.
+- [x] 64 imagens treino, 8 validação, 8 teste.
+- [x] Classes e rótulos YOLO validados pelo notebook.
+- [x] Todos os códigos executados sem erro.
+- [x] Treinamentos de 30 e 60 épocas completos.
+- [x] Comparação de precisão, erros, tempos e facilidade das abordagens.
+- [x] Gráficos de perda e prints dos oito testes gerados.
+- [x] Discussão crítica com resultados reais.
+- [x] Repositório público criado.
+- [x] README atualizado com os resultados.
+- [ ] Salvar/confirmar no GitHub o notebook executado com as saídas visíveis.
+- [ ] Publicar e inserir no README o link público do dataset/Drive.
+- [ ] Conferir o arquivo de fontes/origens e permissões de leitura.
+- [ ] Conferir se Wagner está incluído no grupo no portal da FIAP.
+- [ ] Vídeo não listado de até cinco minutos.
+- [ ] Inserir o link do vídeo no README.
+- [ ] Conferir todos os links em janela anônima.
+- [ ] Enviar o link do GitHub no portal.
+- [ ] Não fazer commits depois da entrega.
 
-Não há dataset, pesos treinados, números experimentais ou vídeo incluídos neste pacote. Estes itens dependem da preparação e execução real. Não presumir que o código passou por treinamento completo: houve apenas validação sintática/estrutural local.
+## Observação sobre o repositório
 
-## Identificação conferida no GitHub
-
-O README da Fase 5 informa Kauan Maciel Forgiarini, RM 574005, e Wagner Adriano de Souza Silva Junior, RM 569431, no Grupo 7 daquela fase. O enunciado atual mostra Grupo 9 com somente Kauan. A identificação desta entrega segue o portal atual; Wagner foi confirmado pelo Kauan como integrante desta fase em 07/10/2026. Conferir o cadastro da dupla no portal.
-
-## Criar o novo repositório
-
-Repositório criado pelo usuário: https://github.com/KauanForgiarini/farmtech-fase6 (público). O enunciado pede o nome do grupo no nome do repositório; para aderência literal, renomear para grupo-9-farmtech-fase6 e atualizar os links do Colab. Não usar o repositório da Fase 5 para esta nova entrega.
+O repositório atual é `KauanForgiarini/farmtech-fase6`. Se o professor exigir literalmente o número/nome do grupo no nome do repositório, renomear antes da entrega e atualizar o link do Colab/README.
