@@ -16,7 +16,7 @@ Prazo informado: 13/10/2026 às 23h59. Até três dias de atraso: teto de 70% da
 - CNN do zero treinada por 60 épocas; melhor validação na época 20.
 - Avaliação final e prints das oito imagens executados.
 - Discussão crítica consolidada em `RESULTADOS.md`.
-- Vídeo: pendente.
+- Vídeo de demonstração: https://www.youtube.com/watch?v=YaGO_pKKdYw
 
 ## Resultados conferidos
 
@@ -47,12 +47,14 @@ Prazo informado: 13/10/2026 às 23h59. Até três dias de atraso: teto de 70% da
 - [x] Discussão crítica com resultados reais.
 - [x] Repositório público criado.
 - [x] README atualizado com os resultados.
-- [ ] Salvar/confirmar no GitHub o notebook executado com as saídas visíveis.
-- [ ] Publicar e inserir no README o link público do dataset/Drive.
-- [ ] Conferir o arquivo de fontes/origens e permissões de leitura.
+- [x] Notebook executado salvo no GitHub: oito células de código com contagem de execução e sem saídas de erro.
+- [x] Inserir no README o link compartilhável do dataset/Drive.
+- [x] Documentar fontes/origens em `FONTES.md`.
+- [ ] Confirmar que o Drive permite leitura a qualquer pessoa com o link.
 - [ ] Conferir se Wagner está incluído no grupo no portal da FIAP.
-- [ ] Vídeo não listado de até cinco minutos.
-- [ ] Inserir o link do vídeo no README.
+- [x] Link do vídeo recebido.
+- [ ] Confirmar acesso ao vídeo sem login e duração de até cinco minutos.
+- [x] Inserir o link do vídeo no README.
 - [ ] Conferir todos os links em janela anônima.
 - [ ] Enviar o link do GitHub no portal.
 - [ ] Não fazer commits depois da entrega.
@@ -60,3 +62,11 @@ Prazo informado: 13/10/2026 às 23h59. Até três dias de atraso: teto de 70% da
 ## Observação sobre o repositório
 
 O repositório atual é `KauanForgiarini/farmtech-fase6`. Se o professor exigir literalmente o número/nome do grupo no nome do repositório, renomear antes da entrega e atualizar o link do Colab/README.
+
+## Links para enviar
+
+- Repositório: https://github.com/KauanForgiarini/farmtech-fase6
+- Vídeo: https://www.youtube.com/watch?v=YaGO_pKKdYw
+- Dataset/artefatos: https://drive.google.com/drive/folders/1XsiF9JkagZAkUnX5rIdGXNYqh_KopUOf?usp=sharing
+
+O envio no portal e as verificações externas acima precisam ser concluídos pela dupla. A revisão do repositório não confirma permissões do Drive, duração/visibilidade do vídeo ou composição do grupo no portal.
