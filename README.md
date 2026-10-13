@@ -9,14 +9,14 @@ Projeto acadêmico de Inteligência Artificial da FIAP: demonstração de visão
 | Kauan Maciel Forgiarini | 574005 |
 | Wagner Adriano de Souza Silva Junior | 569431 |
 
-**Status:** experimentos concluídos no Google Colab com GPU T4. O notebook foi executado de ponta a ponta com 80 imagens. Falta apenas consolidar os links públicos finais e inserir o vídeo de demonstração.
+**Status:** experimentos concluídos no Google Colab com GPU T4. O notebook foi executado de ponta a ponta com 80 imagens. Notebook executado, resultados, documentação e links de acesso reunidos para a entrega.
 
 ## Acessos
 
 - [Notebook principal](./KauanMacielForgiarini_rm574005_pbl_fase6.ipynb)
 - [Abrir no Colab](https://colab.research.google.com/github/KauanForgiarini/farmtech-fase6/blob/main/KauanMacielForgiarini_rm574005_pbl_fase6.ipynb)
 - [Dataset e arquivos no Google Drive](https://drive.google.com/drive/folders/1XsiF9JkagZAkUnX5rIdGXNYqh_KopUOf?usp=sharing)
-- Vídeo não listado no YouTube (até 5 minutos): **PREENCHER depois que o Wagner enviar**
+- [Vídeo de demonstração no YouTube](https://www.youtube.com/watch?v=YaGO_pKKdYw)
 
 ## Dataset
 
