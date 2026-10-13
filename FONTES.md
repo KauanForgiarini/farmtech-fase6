@@ -24,3 +24,7 @@ O arquivo `fontes_openimages.csv`, gerado durante a preparação do dataset, reg
 ## Observação acadêmica
 
 O dataset foi usado exclusivamente para fins acadêmicos neste protótipo da FIAP. As imagens não são redistribuídas diretamente neste repositório; o compartilhamento do conjunto utilizado é feito por link do Google Drive para avaliação.
+
+## Arquivos de registro
+
+`fontes.csv` neste repositório é apenas um modelo vazio para coleta manual. Não contém a origem das 80 imagens utilizadas. O script gera o registro `FarmTech_Fase6/fontes_openimages.csv`, que deve acompanhar o dataset no Drive. A presença e o preenchimento desse arquivo no Drive, incluindo a conferência das licenças individuais, não foram verificados nesta revisão.
