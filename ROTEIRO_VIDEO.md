@@ -6,6 +6,9 @@ Este roteiro foi feito para que qualquer integrante da dupla consiga gravar o v�
 **Grupo:** 9.  
 **Duração recomendada:** entre 4min30s e 5min.
 
+**Vídeo recebido:** https://www.youtube.com/watch?v=YaGO_pKKdYw
+Este arquivo é material de apoio à gravação; as métricas foram conferidas com as saídas salvas do notebook.
+
 ---
 
 ## 1. Antes de gravar
@@ -102,7 +105,7 @@ Se der tempo, abrir uma imagem de pessoa e uma de carro.
 
 “Temos 64 imagens para treinamento, 8 para validação e 8 para teste. Em cada divisão existe a mesma quantidade de imagens das duas classes.”
 
-“Os rótulos seguem o formato YOLO, com caixas delimitadoras indicando a localização dos objetos.”
+“As imagens e anotações vieram do Open Images V7. O script converte as caixas para o formato YOLO, indicando a localização dos objetos.”
 
 “Para evitar vazamento entre os conjuntos, as imagens foram separadas antes do treinamento e o notebook também faz uma validação automática da estrutura e dos arquivos.”
 
